@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "403073235741",
+    "firebase_url": "https://uatizapi01.firebaseio.com",
+    "project_id": "uatizapi01",
+    "storage_bucket": "uatizapi01.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:403073235741:android:c9e4332f202c0c63",
+        "android_client_info": {
+          "package_name": "senac.cadaluno.castellan.wazap"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "403073235741-3co5o0urotesbgktm7q89kk9k5hl4k1g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "senac.cadaluno.castellan.wazap",
+            "certificate_hash": "13d53942ec5afeea4c3f9a9e8d27168fcf86d4fc"
+          }
+        },
+        {
+          "client_id": "403073235741-7nab1u55un8l2jbu38rcjcpv25efpeop.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_XPUeiXZXhSAY4FrjOcTWeZyXv49qPDs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "403073235741-7nab1u55un8l2jbu38rcjcpv25efpeop.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
