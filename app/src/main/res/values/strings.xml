@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">ZapitiZopiti</string>
     <string name="digite_seu_nome">Digite seu nome</string>
+    <string name="ddi">DDI</string>
+    <string name="ddi_55">+55</string>
+    <string name="ddd">DDD</string>
+    <string name="ddd_91">91</string>
+    <string name="cadastrar">Cadastrar</string>
+    <string name="digite_number">Digite seu número</string>
 </resources>
