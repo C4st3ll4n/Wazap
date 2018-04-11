@@ -54,6 +54,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/digite_seu_nome"
+            android:inputType="textCapWords|textAutoCorrect|textAutoComplete"
             android:textAlignment="center"
             android:textColor="@color/colorAccent"
             android:textColorHint="@color/colorAccent"
@@ -67,7 +68,8 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="26dp"
+        android:layout_marginTop="24dp"
+        android:gravity="center"
         android:hint="@string/ddi"
         android:textColorHint="@color/colorAccent"
         app:layout_constraintEnd_toStartOf="@+id/layoutDDD"
@@ -79,6 +81,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/ddi"
+            android:inputType="number"
             android:text="@string/ddi_55"
             android:textAlignment="center"
             android:textColor="@color/colorAccent"
@@ -101,6 +104,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/ddd"
+            android:inputType="number"
             android:text="@string/ddd_91"
             android:textAlignment="center"
             android:textColor="@color/colorAccent"
@@ -121,18 +125,18 @@
         app:layout_constraintStart_toEndOf="@+id/layoutDDD"
         app:layout_constraintTop_toBottomOf="@+id/layoutNome"
         app:counterEnabled="true"
-        app:counterMaxLength="9">
+        >
 
         <android.support.design.widget.TextInputEditText
             android:id="@+id/editNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/digite_number"
+            android:inputType="number"
             android:textAlignment="center"
             android:textColor="@color/colorAccent"
             android:textColorHint="@color/colorAccent"
-            android:textSize="24sp"
-            android:maxLength="9"/>
+            android:textSize="24sp" />
     </android.support.design.widget.TextInputLayout>
 
     <Button
@@ -144,6 +148,7 @@
         android:layout_marginStart="8dp"
         android:background="@color/colorPrimaryDark"
         android:elevation="20dp"
+        android:onClick="cadastrar"
         android:text="@string/cadastrar"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Widget.Button"
