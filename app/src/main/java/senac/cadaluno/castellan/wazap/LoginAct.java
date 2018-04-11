@@ -1,61 +1,49 @@
 package senac.cadaluno.castellan.wazap;
 
-import android.Manifest;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatEditText;
-import android.telephony.SmsManager;
 import android.view.View;
-import android.widget.Toast;
 
-import com.github.rtoshiro.util.format.SimpleMaskFormatter;
-import com.github.rtoshiro.util.format.text.MaskTextWatcher;
-
-import java.util.HashMap;
-import java.util.Random;
-
-import senac.cadaluno.castellan.wazap.helper.Permissao;
-import senac.cadaluno.castellan.wazap.helper.Preferencias;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginAct extends AppCompatActivity {
-    AppCompatEditText num, nome, ddd, ddi;
-    private String[] permissoes = new String[]{
+   private FirebaseAuth firebaseAuth;
+    AppCompatEditText email, senha;
+    /*private String[] permissoes = new String[]{
             Manifest.permission.SEND_SMS,
             Manifest.permission.INTERNET
-    };
+    };*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        ddd = findViewById(R.id.editDDD);
-        ddi = findViewById(R.id.editDDI);
-        num = findViewById(R.id.editNumber);
-        nome = findViewById(R.id.editNome);
 
-        Permissao.valida(1, this, permissoes);
+        email = findViewById(R.id.editEmail);
+        senha = findViewById(R.id.editSenha);
 
+
+        //Permissao.valida(1, this, permissoes);
+/*
         SimpleMaskFormatter mascara_numero = new SimpleMaskFormatter("NNNNN - NNNN");
         SimpleMaskFormatter mascara_ddd = new SimpleMaskFormatter("NN");
         SimpleMaskFormatter mascara_ddi = new SimpleMaskFormatter("+NN");
 
-        MaskTextWatcher textWatcher_numero = new MaskTextWatcher(num, mascara_numero);
+        MaskTextWatcher textWatcher_numero = new MaskTextWatcher(email, mascara_numero);
         MaskTextWatcher textWatcher_ddd = new MaskTextWatcher(ddd, mascara_ddd);
         MaskTextWatcher textWatcher_ddi = new MaskTextWatcher(ddi, mascara_ddi);
 
-        num.addTextChangedListener(textWatcher_numero);
+        email.addTextChangedListener(textWatcher_numero);
         ddd.addTextChangedListener(textWatcher_ddd);
-        ddi.addTextChangedListener(textWatcher_ddi);
+        ddi.addTextChangedListener(textWatcher_ddi);*/
     }
-
+/*
     public void cadastrar(View v) {
-        String nomeUser = nome.getText().toString();
-        String telefone_formatado = ddi.getText().toString() + ddd.getText().toString() + num.getText().toString();
+        String nomeUser = senha.getText().toString();
+        String telefone_formatado = ddi.getText().toString() + ddd.getText().toString() + email.getText().toString();
 
         String numero = telefone_formatado.replace("+", "");
         numero = numero.replace(" - ", "");
@@ -122,5 +110,14 @@ public class LoginAct extends AppCompatActivity {
 
         AlertDialog dialog = builder.create();
         dialog.show();
+    }*/
+
+    public void logar(View v){
+
+    }
+
+    public void goToCadastro(View v){
+        startActivity(new Intent(this,CadastroAct.class));
+        finish();
     }
 }
