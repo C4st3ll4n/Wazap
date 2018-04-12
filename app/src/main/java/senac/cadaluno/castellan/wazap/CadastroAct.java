@@ -2,7 +2,7 @@ package senac.cadaluno.castellan.wazap;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.Snackbar;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatEditText;
 import android.view.View;
@@ -24,12 +24,12 @@ public class CadastroAct extends AppCompatActivity {
     private FirebaseAuth autentic;
     private AppCompatEditText editNome, editEmail, editSenha;
     private User user;
-    private View v;
+    private ConstraintLayout v;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        v = findViewById(R.id.activity_cadastro);
+        v = findViewById(R.id.cl);
         setContentView(R.layout.activity_cadastro);
         editEmail = findViewById(R.id.editEmail);
         editNome = findViewById(R.id.editNome);
@@ -58,8 +58,7 @@ public class CadastroAct extends AppCompatActivity {
                             autentic.signOut();
                             finish();
                         } else {
-                            Toast.makeText(CadastroAct.this, "Errror ao cadastrar o usuário", Toast.LENGTH_SHORT).show();
-                            String m = "";
+                            String m;
                             try {
                                 throw task.getException();
 
@@ -71,10 +70,9 @@ public class CadastroAct extends AppCompatActivity {
                                 m = "Email inválido";
                             } catch (Exception e) {
                                 m = "Algo de errado não está certo";
-                            } finally {
-                                Snackbar snack = Snackbar.make(v, m, Snackbar.LENGTH_SHORT);
-                                snack.show();
                             }
+                            Toast.makeText(CadastroAct.this, m, Toast.LENGTH_SHORT).show();
+
                         }
                     }
                 });
