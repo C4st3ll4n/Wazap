@@ -2,6 +2,7 @@ package senac.cadaluno.castellan.wazap;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatEditText;
 import android.view.View;
@@ -11,6 +12,9 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.auth.FirebaseUser;
 
 import senac.cadaluno.castellan.wazap.helper.config.FirebaseConfigs;
@@ -20,16 +24,19 @@ public class CadastroAct extends AppCompatActivity {
     private FirebaseAuth autentic;
     private AppCompatEditText editNome, editEmail, editSenha;
     private User user;
+    private View v;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        v = findViewById(R.id.activity_cadastro);
         setContentView(R.layout.activity_cadastro);
         editEmail = findViewById(R.id.editEmail);
         editNome = findViewById(R.id.editNome);
         editSenha = findViewById(R.id.editSenha);
     }
 
-    public void fazerCadastro(View v){
+    public void fazerCadastro(View v) {
         user = new User();
         user.setEmail(editEmail.getText().toString());
         user.setNome(editNome.getText().toString());
@@ -48,8 +55,27 @@ public class CadastroAct extends AppCompatActivity {
                             FirebaseUser fireUser = task.getResult().getUser();
                             user.setId(fireUser.getUid());
                             user.salvar();
-                        } else
+                            autentic.signOut();
+                            finish();
+                        } else {
                             Toast.makeText(CadastroAct.this, "Errror ao cadastrar o usuário", Toast.LENGTH_SHORT).show();
+                            String m = "";
+                            try {
+                                throw task.getException();
+
+                            } catch (FirebaseAuthWeakPasswordException f) {
+                                m = "Senha fraca demais";
+                            } catch (FirebaseAuthUserCollisionException f) {
+                                m = "User já existe";
+                            } catch (FirebaseAuthInvalidCredentialsException f) {
+                                m = "Email inválido";
+                            } catch (Exception e) {
+                                m = "Algo de errado não está certo";
+                            } finally {
+                                Snackbar snack = Snackbar.make(v, m, Snackbar.LENGTH_SHORT);
+                                snack.show();
+                            }
+                        }
                     }
                 });
 

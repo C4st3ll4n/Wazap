@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatEditText;
 import android.view.View;
 
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginAct extends AppCompatActivity {
@@ -118,6 +117,5 @@ public class LoginAct extends AppCompatActivity {
 
     public void goToCadastro(View v){
         startActivity(new Intent(this,CadastroAct.class));
-        finish();
     }
 }

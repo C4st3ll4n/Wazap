@@ -1,6 +1,7 @@
 package senac.cadaluno.castellan.wazap.model;
 
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.Exclude;
 
 import senac.cadaluno.castellan.wazap.helper.config.FirebaseConfigs;
 
@@ -21,6 +22,7 @@ public class User {
         ref.child("USERS").child(getId()).setValue(this);
     }
 
+    @Exclude
     public String getId() {
         return Id;
     }
@@ -45,6 +47,7 @@ public class User {
         this.email = email;
     }
 
+    @Exclude
     public String getSenha() {
         return Senha;
     }
