@@ -8,6 +8,7 @@ import senac.cadaluno.castellan.wazap.helper.config.FirebaseConfigs;
 /**
  * Criado por Henrique em 12/04/2018.
  */
+
 public class User {
     private String Id;
     private String Nome;

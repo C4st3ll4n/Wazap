@@ -2,11 +2,21 @@ package senac.cadaluno.castellan.wazap;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatEditText;
 import android.view.View;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseAuthInvalidUserException;
+
+import senac.cadaluno.castellan.wazap.helper.config.FirebaseConfigs;
+import senac.cadaluno.castellan.wazap.model.User;
 
 public class LoginAct extends AppCompatActivity {
    private FirebaseAuth firebaseAuth;
@@ -112,10 +122,36 @@ public class LoginAct extends AppCompatActivity {
     }*/
 
     public void logar(View v){
-
+        User u = new User();
+        u.setSenha(senha.getText().toString());
+        u.setEmail(email.getText().toString());
+        firebaseAuth = FirebaseConfigs.getFireAuth();
+        firebaseAuth.signInWithEmailAndPassword(u.getEmail(), u.getSenha()).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()) {
+                    Toast.makeText(LoginAct.this, "LOGIN FUNFOU", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(getApplicationContext(), Principal.class));
+                } else {
+                    String m = "";
+                    try {
+                        throw task.getException();
+                    } catch (FirebaseAuthInvalidCredentialsException e) {
+                        m = "Senha errada !";
+                    } catch (FirebaseAuthInvalidUserException e) {
+                        m = "Esse email não existe em nosso banco de dados !";
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    Toast.makeText(LoginAct.this, m, Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
     public void goToCadastro(View v){
         startActivity(new Intent(this,CadastroAct.class));
     }
+
+
 }

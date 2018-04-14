@@ -21,7 +21,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ValidaAct" />
-        <activity android:name=".CadastroAct"></activity>
+        <activity android:name=".CadastroAct" />
+        <activity android:name=".Principal"></activity>
     </application>
 
 </manifest>
