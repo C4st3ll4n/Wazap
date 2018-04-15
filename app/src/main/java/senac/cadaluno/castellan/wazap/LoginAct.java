@@ -28,6 +28,7 @@ public class LoginAct extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        isLogado();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
@@ -153,5 +154,8 @@ public class LoginAct extends AppCompatActivity {
         startActivity(new Intent(this,CadastroAct.class));
     }
 
-
+    private void isLogado() {
+        firebaseAuth = FirebaseConfigs.getFireAuth();
+        if (firebaseAuth.getCurrentUser() != null) startActivity(new Intent(this, Principal.class));
+    }
 }
