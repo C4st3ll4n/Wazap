@@ -28,6 +28,8 @@ public class LoginAct extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        startActivity(new Intent(this, Principal.class));
+        finish();
         isLogado();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);

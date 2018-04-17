@@ -24,12 +24,9 @@ public class CadastroAct extends AppCompatActivity {
     private FirebaseAuth autentic;
     private AppCompatEditText editNome, editEmail, editSenha;
     private User user;
-    private ConstraintLayout v;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        v = findViewById(R.id.cl);
         setContentView(R.layout.activity_cadastro);
         editEmail = findViewById(R.id.editEmail);
         editNome = findViewById(R.id.editNome);

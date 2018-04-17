@@ -22,7 +22,8 @@
         </activity>
         <activity android:name=".ValidaAct" />
         <activity android:name=".CadastroAct" />
-        <activity android:name=".Principal"></activity>
+        <activity android:name=".Principal" />
+        <activity android:name=".helper.SlidingTabStrip"></activity>
     </application>
 
 </manifest>
