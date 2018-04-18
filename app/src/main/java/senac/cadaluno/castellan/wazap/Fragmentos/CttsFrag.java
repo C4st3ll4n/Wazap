@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import senac.cadaluno.castellan.wazap.R;
@@ -23,7 +24,9 @@ public class CttsFrag extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_ctts, container, false);
+        View v = inflater.inflate(R.layout.fragment_ctts, container, false);
+        TextView tx = v.findViewById(R.id.txC);
+        return v;
     }
 
 }

@@ -1,5 +1,6 @@
 package senac.cadaluno.castellan.wazap;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
@@ -17,6 +18,7 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.auth.FirebaseUser;
 
+import senac.cadaluno.castellan.wazap.helper.Base64Custom;
 import senac.cadaluno.castellan.wazap.helper.config.FirebaseConfigs;
 import senac.cadaluno.castellan.wazap.model.User;
 
@@ -48,11 +50,14 @@ public class CadastroAct extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+
                             Toast.makeText(CadastroAct.this, "Cadastrado com sucesso", Toast.LENGTH_SHORT).show();
+
                             FirebaseUser fireUser = task.getResult().getUser();
-                            user.setId(fireUser.getUid());
+                            String emailCodificado = Base64Custom.encoder64(user.getEmail());
+                            user.setId(emailCodificado);
                             user.salvar();
-                            autentic.signOut();
+                            startActivity(new Intent(CadastroAct.this,LoginAct.class));
                             finish();
                         } else {
                             String m;
